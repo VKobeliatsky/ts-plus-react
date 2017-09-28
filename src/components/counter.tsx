@@ -4,34 +4,37 @@ import { increment, decrement } from '../actions';
 
 export interface Props {
     count: number;
-    onIncrement: () => void;
-    onDecrement: () => void;
+    increment: number;
+    decrement: number;
+    onIncrement: (n: number) => void;
+    onDecrement: (n: number) => void;
 }
 
 class Counter extends React.Component<Props> {
     render() {
-        const {count, onDecrement, onIncrement} = this.props;
+        const { count } = this.props;
 
         return (
             <div>
-                <button
-                    onClick={onDecrement}
-                >-
+                <button onClick={this.handleDecrement} >
+                    -{decrement}
                 </button>
                 count: {count}
-                <button
-                    onClick={onIncrement}
-                >+
+                <button onClick={this.handleIncrement} >
+                    +{increment}
                 </button>
             </div>        
         );
     }
+
+    private handleDecrement = () => this.props.onDecrement(this.props.decrement);
+    private handleIncrement = () => this.props.onIncrement(this.props.increment);
 }
 
 export default connect(
      count => ({count}),
      dispatch => ({
-         onIncrement() { dispatch(increment()); },
-         onDecrement() { dispatch(decrement()); }
+         onIncrement(n: number) { dispatch(increment(n)); },
+         onDecrement(n: number) { dispatch(decrement(n)); }
      })
 )(Counter);
