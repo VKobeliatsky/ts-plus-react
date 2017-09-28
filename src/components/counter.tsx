@@ -10,7 +10,11 @@ export interface Props {
 
 class Counter extends React.Component<Props> {
     render() {
-        const {count, onDecrement, onIncrement} = this.props;
+        const {
+            count,
+            onDecrement,
+            onIncrement
+        } = this.props;
 
         return (
             <div>
@@ -31,7 +35,11 @@ class Counter extends React.Component<Props> {
 export default connect(
      count => ({count}),
      dispatch => ({
-         onIncrement() { dispatch(increment()); },
-         onDecrement: () => { dispatch(decrement()); }
+         onIncrement() { 
+            dispatch(increment()); 
+        },
+        onDecrement: () => {
+            dispatch(decrement());
+        }
      })
 )(Counter);
