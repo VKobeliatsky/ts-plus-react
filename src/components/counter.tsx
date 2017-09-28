@@ -1,42 +1,36 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
 export interface Props {
-    initial?: number;
-}
-
-export interface State {
     count: number;
+    onIncrement: () => void;
+    onDecrement: () => void;
 }
 
-export default class Counter extends React.Component<Props, State> {
-    constructor({initial = 0}: Props) {
-        super();
-        this.state = {
-            count: initial
-        };
-    }
-
-    componentWillReceiveProps(props: Props) {
-        this.setState({count: props.initial || 0});
-    }
-    
+class Counter extends React.Component<Props> {
     render() {
-        const {count} = this.state;
+        const {count, onDecrement, onIncrement} = this.props;
+
         return (
             <div>
                 <button
-                    onClick={this.handleDecrement}
+                    onClick={onDecrement}
                 >-
                 </button>
                 count: {count}
                 <button
-                    onClick={this.handleIncrement}
+                    onClick={onIncrement}
                 >+
                 </button>
-            </div>
+            </div>        
         );
     }
-
-    private handleDecrement = () => this.setState({count: this.state.count - 1});
-    private handleIncrement = () => this.setState({count: this.state.count + 1});
 }
+
+export default connect(
+     count => ({count}),
+     dispatch => ({
+         onIncrement() { dispatch({type: 'INCREMENT'}); },
+         onDecrement: () => { dispatch({type: 'DECREMENT'}); }
+     })
+)(Counter);
