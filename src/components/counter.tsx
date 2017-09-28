@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { increment, decrement } from '../actions';
 
 export interface Props {
     count: number;
@@ -30,7 +31,7 @@ class Counter extends React.Component<Props> {
 export default connect(
      count => ({count}),
      dispatch => ({
-         onIncrement() { dispatch({type: 'INCREMENT'}); },
-         onDecrement: () => { dispatch({type: 'DECREMENT'}); }
+         onIncrement() { dispatch(increment()); },
+         onDecrement: () => { dispatch(decrement()); }
      })
 )(Counter);
