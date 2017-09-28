@@ -1,6 +1,7 @@
-import { AnyAction } from 'redux';
+import { Reducer } from 'redux';
+import { CounterAction } from '../actions/types';
 
-export default (state = 0, action: AnyAction) => {
+export const counter: Reducer<number> = (state = 0, action: CounterAction) => {
     switch (action.type) {
       case 'INCREMENT':
         return state + 1;
