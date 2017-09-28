@@ -1,5 +1,8 @@
 import { ActionCreator } from 'redux';
-import { CounterAction } from './types';
+import { Increment, Decrement } from './types';
 
-export const increment: ActionCreator<CounterAction> = () => ({type: 'INCREMENT'});
-export const decrement: ActionCreator<CounterAction> = () => ({type: 'DECREMENT'});
+export const increment: ActionCreator<Increment> = 
+    (n: number = 1) => ({type: 'INCREMENT', increment: n});
+
+export const decrement: ActionCreator<Decrement> = 
+    (n: number = 1) => ({type: 'DECREMENT', decrement: n});

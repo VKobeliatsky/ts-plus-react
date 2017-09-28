@@ -1,9 +1,15 @@
-import { Action } from 'redux';
 
-export type ActionType 
-    = 'INCREMENT' 
-    | 'DECREMENT';
+export type Increment = {
+    type: 'INCREMENT',
+    increment: number
+};
 
-export interface CounterAction extends Action {
-    type: ActionType;
-}
+export type Decrement = {
+    type: 'DECREMENT',
+    decrement: number
+};
+
+export type CounterAction 
+    = Increment
+    | Decrement
+    ;
