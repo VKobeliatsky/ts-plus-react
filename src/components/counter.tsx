@@ -9,15 +9,19 @@ export interface State {
 }
 
 export default class Counter extends React.Component<Props, State> {
-    constructor({initial = 0}: Props) {
+    static defaultProps = {
+        initial: 0
+    };
+
+    constructor({initial}: Props) {
         super();
         this.state = {
-            count: initial
+            count: initial!
         };
     }
 
     componentWillReceiveProps(props: Props) {
-        this.setState({count: props.initial || 0});
+        this.setState({count: props.initial!});
     }
     
     render() {
