@@ -5,7 +5,7 @@ interface Person {
     lastName: string;
 }
 
-function greeter(person : Person) {
+function greeter(person: Person) {
     return "Hello, " + person.firstName + " " + person.lastName;
 }
 
