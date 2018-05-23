@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import { State } from '../store/types';
 import { increase, decrease } from '../store/actions';
 
 export interface Props {
@@ -36,7 +37,8 @@ const Counter: React.StatelessComponent<Props> = ({
 export default connect<
     Pick<Props, 'counter'>,
     Pick<Props, 'onIncrement' | 'onDecrement'>,
-    Pick<Props, 'increment' | 'decrement'>
+    Pick<Props, 'increment' | 'decrement'>,
+    State
 >(
      ({counter}) => ({counter}),
      (dispatch, {increment, decrement}) => ({
