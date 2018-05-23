@@ -13,10 +13,10 @@ export default class Counter extends React.Component<Props, State> {
         initial: 0
     };
 
-    constructor({initial}: Props) {
-        super();
+    constructor(props: Props) {
+        super(props);
         this.state = {
-            count: initial!
+            count: props.initial!
         };
     }
 
