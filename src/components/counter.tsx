@@ -2,8 +2,6 @@ import * as React from 'react';
 
 export interface Props {
     initial?: number;
-    increment?: number;
-    decrement?: number;
 }
 
 export interface State {
@@ -15,51 +13,49 @@ export interface State {
 export default class Counter extends React.Component<Props, State> {
 
     static defaultProps = {
-        initial: 0,
-        increment: 1,
-        decrement: 1,
+        initial: 0
     };
 
-    constructor({initial, increment, decrement}: Props) {
+    constructor({initial}: Props) {
         super();
         this.state = {
             count: initial!,
-            increment: increment!,
-            decrement: decrement!
+            increment: 1,
+            decrement: 1
         };
     }
 
     componentWillReceiveProps(props: Props) {
-        this.setState({
-            count: props.initial!,
-            increment: props.increment!,
-            decrement: props.decrement!
-        });
+        this.setState({count: props.initial!});
     }
     
     render() {
         const {count, increment, decrement} = this.state;
         return (
             <div>
-                <button onClick={this.handleDecrement}>
-                    increase by
-                </button>
-                <input
-                    type="number"
-                    value={String(decrement)}
-                    min={0}
-                    onChange={this.handleDecrementChange}
-                />
-                count: {count}
-                <button onClick={this.handleIncrement}>
-                    decrease by
-                </button>
-                <input
-                    type="number"
-                    value={String(increment)}
-                    min={0}
-                    onChange={this.handleIncrementChange}
-                />
+                <p>
+                    <button onClick={this.handleDecrement}>
+                        decrease by
+                    </button>
+                    <input
+                        type="number"
+                        value={String(decrement)}
+                        min={0}
+                        onChange={this.handleDecrementChange}
+                    />
+                </p>
+                <h2>count: {count}</h2>
+                <p>
+                    <button onClick={this.handleIncrement}>
+                        increase by
+                    </button>
+                    <input
+                        type="number"
+                        value={String(increment)}
+                        min={0}
+                        onChange={this.handleIncrementChange}
+                    />
+                </p>
             </div>
         );
     }
