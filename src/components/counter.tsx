@@ -16,13 +16,17 @@ class Counter extends React.Component<Props> {
 
         return (
             <div>
-                <button onClick={this.handleDecrement} >
-                    -{decrement}
-                </button>
-                count: {count}
-                <button onClick={this.handleIncrement} >
-                    +{increment}
-                </button>
+                <p>
+                    <button onClick={this.handleDecrement} >
+                        -{decrement}
+                    </button>
+                </p>
+                <h2>count: {count}</h2>
+                <p>
+                    <button onClick={this.handleIncrement} >
+                        +{increment}
+                    </button>
+                </p>
             </div>        
         );
     }
