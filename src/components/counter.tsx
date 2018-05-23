@@ -28,15 +28,17 @@ export default class Counter extends React.Component<Props, State> {
         const {count} = this.state;
         return (
             <div>
-                <button
-                    onClick={this.handleDecrement}
-                >-
-                </button>
-                count: {count}
-                <button
-                    onClick={this.handleIncrement}
-                >+
-                </button>
+                <p>
+                    <button onClick={this.handleDecrement}>
+                    decrease
+                    </button>
+                </p>
+                <h2>count: {count}</h2>
+                <p>
+                    <button onClick={this.handleIncrement} >
+                    increase
+                    </button>
+                </p>
             </div>
         );
     }
