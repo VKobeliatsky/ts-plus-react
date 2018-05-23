@@ -1,44 +1,45 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { increment, decrement } from '../actions';
+import { increase, decrease } from '../actions';
 
 export interface Props {
     count: number;
     increment: number;
     decrement: number;
-    onIncrement: (n: number) => void;
-    onDecrement: (n: number) => void;
+    onIncrement: () => void;
+    onDecrement: () => void;
 }
 
-class Counter extends React.Component<Props> {
-    render() {
-        const { count } = this.props;
+const Counter: React.StatelessComponent<Props> = ({
+    count,
+    increment,
+    decrement,
+    onIncrement,
+    onDecrement
+}) => (
+    <div>
+        <p>
+            <button onClick={onDecrement} >
+                decrease by {decrement}
+            </button>
+        </p>
+        <h2>count: {count}</h2>
+        <p>
+            <button onClick={onIncrement} >
+                increase by {increment}
+            </button>
+        </p>
+    </div>    
+);
 
-        return (
-            <div>
-                <p>
-                    <button onClick={this.handleDecrement} >
-                        -{decrement}
-                    </button>
-                </p>
-                <h2>count: {count}</h2>
-                <p>
-                    <button onClick={this.handleIncrement} >
-                        +{increment}
-                    </button>
-                </p>
-            </div>        
-        );
-    }
-
-    private handleDecrement = () => this.props.onDecrement(this.props.decrement);
-    private handleIncrement = () => this.props.onIncrement(this.props.increment);
-}
-
-export default connect(
+export default connect<
+    Pick<Props, 'count'>,
+    Pick<Props, 'onIncrement' | 'onDecrement'>,
+    Pick<Props, 'increment' | 'decrement'>
+>(
      count => ({count}),
-     dispatch => ({
-         onIncrement(n: number) { dispatch(increment(n)); },
-         onDecrement(n: number) { dispatch(decrement(n)); }
+     (dispatch, {increment, decrement}) => ({
+         onIncrement() { dispatch(increase(increment)); },
+         onDecrement() { dispatch(decrease(decrement)); }
      })
 )(Counter);

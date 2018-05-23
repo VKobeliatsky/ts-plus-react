@@ -1,8 +1,13 @@
-import { ActionCreator } from 'redux';
 import { Increment, Decrement } from './types';
 
-export const increment: ActionCreator<Increment> = 
-    (n: number = 1) => ({type: 'INCREMENT', increment: n});
+export function increase(
+    n: number = 1
+): Increment {
+    return {type: 'INCREMENT', increment: n};
+}
 
-export const decrement: ActionCreator<Decrement> = 
-    (n: number = 1) => ({type: 'DECREMENT', decrement: n});
+export function decrease(
+    n: number = 1
+): Decrement {
+    return {type: 'DECREMENT', decrement: n};
+}
