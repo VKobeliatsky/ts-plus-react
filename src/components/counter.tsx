@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { increase, decrease } from '../actions';
+import { increase, decrease } from '../store/actions';
 
 export interface Props {
     count: number;

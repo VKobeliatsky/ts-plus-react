@@ -1,11 +1,11 @@
 import { Reducer } from 'redux';
-import { CounterAction } from '../actions/types';
+import { Action } from '../actions';
 
-export const counter: Reducer<number> = (state = 0, action: CounterAction) => {
+export const counter: Reducer<number> = (state = 0, action: Action) => {
     switch (action.type) {
-      case 'INCREMENT':
+      case 'INCREASE':
         return state + action.increment;
-      case 'DECREMENT':
+      case 'DECREASE':
         return state - action.decrement;
       default:
         return state;
