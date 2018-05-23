@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
 import { increase, decrease } from '../store/actions';
 
 export interface Props {
-    count: number;
+    counter: number;
     increment: number;
     decrement: number;
     onIncrement: () => void;
@@ -11,7 +12,7 @@ export interface Props {
 }
 
 const Counter: React.StatelessComponent<Props> = ({
-    count,
+    counter,
     increment,
     decrement,
     onIncrement,
@@ -23,7 +24,7 @@ const Counter: React.StatelessComponent<Props> = ({
                 decrease by {decrement}
             </button>
         </p>
-        <h2>count: {count}</h2>
+        <h2>count: {counter}</h2>
         <p>
             <button onClick={onIncrement} >
                 increase by {increment}
@@ -33,11 +34,11 @@ const Counter: React.StatelessComponent<Props> = ({
 );
 
 export default connect<
-    Pick<Props, 'count'>,
+    Pick<Props, 'counter'>,
     Pick<Props, 'onIncrement' | 'onDecrement'>,
     Pick<Props, 'increment' | 'decrement'>
 >(
-     count => ({count}),
+     ({counter}) => ({counter}),
      (dispatch, {increment, decrement}) => ({
          onIncrement() { dispatch(increase(increment)); },
          onDecrement() { dispatch(decrease(decrement)); }
