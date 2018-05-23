@@ -1,4 +1,4 @@
 
 export type State = {
-    count: number
+    counter: number
 };
