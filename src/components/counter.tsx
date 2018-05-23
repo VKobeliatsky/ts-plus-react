@@ -8,6 +8,8 @@ export interface Props {
 
 export interface State {
     count: number;
+    increment: number;
+    decrement: number;
 }
 
 export default class Counter extends React.Component<Props, State> {
@@ -18,40 +20,60 @@ export default class Counter extends React.Component<Props, State> {
         decrement: 1,
     };
 
-    constructor({initial}: Props) {
+    constructor({initial, increment, decrement}: Props) {
         super();
         this.state = {
-            count: initial!
+            count: initial!,
+            increment: increment!,
+            decrement: decrement!
         };
     }
 
     componentWillReceiveProps(props: Props) {
-        this.setState({count: props.initial!});
+        this.setState({
+            count: props.initial!,
+            increment: props.increment!,
+            decrement: props.decrement!
+        });
     }
     
     render() {
-        const {increment, decrement} = this.props;
-        const {count} = this.state;
+        const {count, increment, decrement} = this.state;
         return (
             <div>
-                <button
-                    onClick={this.handleDecrement}
-                    value={decrement}
-                >-{decrement}
+                <button onClick={this.handleDecrement}>
+                    increase by
                 </button>
+                <input
+                    type="number"
+                    value={String(decrement)}
+                    min={0}
+                    onChange={this.handleDecrementChange}
+                />
                 count: {count}
-                <button
-                    onClick={this.handleIncrement}
-                    value={increment}
-                >+{increment}
+                <button onClick={this.handleIncrement}>
+                    decrease by
                 </button>
+                <input
+                    type="number"
+                    value={String(increment)}
+                    min={0}
+                    onChange={this.handleIncrementChange}
+                />
             </div>
         );
     }
 
-    private handleDecrement: React.MouseEventHandler<HTMLButtonElement> = 
-        e => this.setState({count: this.state.count - Number(e.currentTarget.value)})
+    private handleDecrement = () =>
+        this.setState({count: this.state.count - this.state.decrement})
 
-    private handleIncrement: React.MouseEventHandler<HTMLButtonElement> = 
-        e => this.setState({count: this.state.count + Number(e.currentTarget.value)})
+    private handleDecrementChange: React.ChangeEventHandler<HTMLInputElement> =
+        e => this.setState({decrement: Number(e.currentTarget.value)})
+
+    private handleIncrement = () =>
+        this.setState({count: this.state.count + this.state.increment})
+
+    private handleIncrementChange: React.ChangeEventHandler<HTMLInputElement> =
+        e => this.setState({increment: Number(e.currentTarget.value)})
+
 }
