@@ -18,15 +18,17 @@ class Counter extends React.Component<Props> {
 
         return (
             <div>
-                <button
-                    onClick={onDecrement}
-                >-
-                </button>
-                count: {count}
-                <button
-                    onClick={onIncrement}
-                >+
-                </button>
+                <p>
+                    <button onClick={onDecrement}>
+                    increase
+                    </button>
+                </p>
+                <h2>count: {count}</h2>
+                <p>
+                    <button onClick={onIncrement}>
+                    decrease
+                    </button>
+                </p>
             </div>        
         );
     }
