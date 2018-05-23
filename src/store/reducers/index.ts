@@ -1,7 +1,9 @@
 import { Reducer } from 'redux';
-import { Action } from '../actions';
 
-export const counter: Reducer<number> = (state = 0, action: Action) => {
+import { Action } from '../actions';
+import { State } from '../types';
+
+export const counter: Reducer<State['count']> = (state = 0, action: Action) => {
     switch (action.type) {
       case 'INCREASE':
         return state + action.increment;

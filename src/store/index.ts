@@ -1,5 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 import { counter } from './reducers';
+import { State } from './types';
 
-export default createStore(counter);
+export default createStore<State>(
+    combineReducers({counter})
+);
