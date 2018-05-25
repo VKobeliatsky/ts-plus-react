@@ -3,7 +3,7 @@ import './App.css';
 
 import Header from './components/header';
 import Counter from './components/counter';
-import History from './components/history';
+import HistoryManager from './components/history-manager';
 
 class App extends React.Component {
   render() {
@@ -12,8 +12,8 @@ class App extends React.Component {
         <Header />
         <Counter />
         <div className="histories">
-            <History entries={3} />
-            <History entries={10} />
+            <HistoryManager entries={3} />
+            <HistoryManager entries={10} />
         </div>
       </div>
     );

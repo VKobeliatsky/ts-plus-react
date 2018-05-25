@@ -27,7 +27,10 @@
     display: flex;
 }
 
-.history {
+.history-manager {
     flex-grow: 1;
+}
+
+.history {
     list-style: none;
 }
