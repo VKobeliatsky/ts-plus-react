@@ -1,8 +1,14 @@
-import { createStore, combineReducers } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 
-import { counter } from './reducers';
+import { counter, increment, decrement } from './reducers';
 import { State } from './types';
 
 export default createStore<State>(
-    combineReducers({counter})
+    combineReducers({
+        counter,
+        increment,
+        decrement
+    }),
+    applyMiddleware(thunk)
 );
