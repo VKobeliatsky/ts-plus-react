@@ -2,6 +2,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import { counter, increment, decrement, history } from './reducers';
+import services from './services';
 import { State } from './types';
 
 export default createStore<State>(
@@ -11,5 +12,7 @@ export default createStore<State>(
         decrement,
         history
     }),
-    applyMiddleware(thunk)
+    applyMiddleware(
+        thunk.withExtraArgument(services)
+    )
 );

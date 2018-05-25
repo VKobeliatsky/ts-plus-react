@@ -7,16 +7,16 @@ import { createHistoryEntriesSelector } from '../store/selectors';
 
 interface Props {
     entries: number;
-    history: number[];
+    history: State['history'];
 }
 
 const History: React.StatelessComponent<Props> = (
     {history}
 ) => (
     <ul className="history">
-        {history.map(
-            (value, index) => <li key={history.length - index}>
-                {value}
+        {history.map((entry, index) =>
+            <li key={history.length - index}>
+                at {entry.time} value was {entry.value}
             </li>
         )}
     </ul>

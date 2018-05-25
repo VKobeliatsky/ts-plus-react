@@ -47,7 +47,7 @@ export const history: Reducer<State['history']> = (
 ) => {
     switch (action.type) {
         case 'PUSH_TO_HISTORY':
-            return [action.payload.value, ...state];
+            return [action.payload, ...state];
         default:
             return state;
     }

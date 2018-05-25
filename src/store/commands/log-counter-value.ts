@@ -5,7 +5,8 @@ export type LogCounterValue = Command;
 
 export const logCounterValue = (
 
-): Command => async (dispatch, getState) => {
+): Command => async (dispatch, getState, {getTime}) => {
     const { counter } = getState();
-    dispatch(pushToHistory(counter));
+    const time = getTime();
+    dispatch(pushToHistory(time, counter));
 };

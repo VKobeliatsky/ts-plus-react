@@ -1,9 +1,9 @@
-import { CounterParametricSelecrtor } from './types';
+import { CounterParametricSelecrtor, HistoryEntry } from './types';
 
 export const createHistoryEntriesSelector = (
 ): CounterParametricSelecrtor<
     {entries: number},
-    number[]
+    HistoryEntry[]
 > => (
     state,
     {entries}
