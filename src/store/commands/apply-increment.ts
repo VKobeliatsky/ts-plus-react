@@ -1,5 +1,5 @@
 import { Command } from '../types';
-import { increase } from '../actions';
+import { increase, pushToHistory } from '../actions';
 
 export type ApplyIncrement = Command;
 
@@ -8,4 +8,6 @@ export const applyIncrement = (
 ): Command => async (dispatch, getState) => {
     const { increment } = getState();
     dispatch(increase(increment));
+    const { counter } = getState();
+    dispatch(pushToHistory(counter));
 };

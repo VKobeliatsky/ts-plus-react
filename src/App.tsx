@@ -3,6 +3,7 @@ import './App.css';
 
 import Header from './components/header';
 import Counter from './components/counter';
+import History from './components/history';
 
 class App extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Counter />
+        <History />
       </div>
     );
   }

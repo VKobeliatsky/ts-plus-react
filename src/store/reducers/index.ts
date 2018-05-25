@@ -9,9 +9,9 @@ export const counter: Reducer<State['counter']> = (
 ) => {
     switch (action.type) {
       case 'INCREASE':
-        return state + action.increment;
+        return state + action.payload.value;
       case 'DECREASE':
-        return state - action.decrement;
+        return state - action.payload.value;
       default:
         return state;
     }
@@ -36,6 +36,18 @@ export const decrement: Reducer<State['decrement']> = (
     switch (action.type) {
         case 'SET_DECREMENT':
             return action.value;
+        default:
+            return state;
+    }
+};
+
+export const history: Reducer<State['history']> = (
+    state = [],
+    action: Action
+) => {
+    switch (action.type) {
+        case 'PUSH_TO_HISTORY':
+            return [action.payload.value, ...state];
         default:
             return state;
     }

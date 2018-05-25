@@ -1,10 +1,12 @@
-export type Decrease = {
-    type: 'DECREASE',
-    decrement: number
-};
+import { CounterAction } from '../types';
+
+export type Decrease = CounterAction<
+    'DECREASE',
+    {value: number}
+>;
 
 export function decrease(
-    n: number
+    value: number
 ): Decrease {
-    return {type: 'DECREASE', decrement: n};
+    return {type: 'DECREASE', payload: {value}};
 }
