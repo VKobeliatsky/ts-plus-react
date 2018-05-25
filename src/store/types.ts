@@ -1,4 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
+import { Selector, ParametricSelector } from 'reselect';
 
 export type State = {
     counter: number,
@@ -16,3 +17,6 @@ export type CounterAction<
 );
 
 export type Command<T = void> = ThunkAction<Promise<T>, State, null>;
+
+export type CounterSelecrtor<R> = Selector<State, R>;
+export type CounterParametricSelecrtor<P, R> = ParametricSelector<State, P, R>;

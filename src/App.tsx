@@ -11,7 +11,10 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Counter />
-        <History />
+        <div className="histories">
+            <History entries={3} />
+            <History entries={10} />
+        </div>
       </div>
     );
   }
